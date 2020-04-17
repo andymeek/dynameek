@@ -1,0 +1,14 @@
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Utils								 																																																																																									|
+// | Used for re-usage and generic styles								 																																																										|
+// +--------------------------------------------------------------------------------------------------------+
+*/
+.max-width { max-width:100% }
+.clear-fix,
+.clearfix { @include clearfix(); }
+.no-flicker {-webkit-transform:translate3d(0,0,0);}
+.text-uppercase { text-transform:uppercase; }
+.relative { position: relative; @include clearfix(); }
+.f-left { float:left; }
+.f-right { float:right; }

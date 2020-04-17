@@ -1,0 +1,98 @@
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Config Variables																																																																																							|
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+/*
+// Main body font size
+// All em measurements should be worked out from this value, for example, if you want to convert 20px into an em, the calculation is
+// 20 / 16 = 1.25
+*/
+$body-base-pixels: 16;
+/*
+// Off canvas menu width
+*/
+$cavas-menu-width: 85%;
+/*
+// Heading font sizes in pixels
+*/
+$h1-pixels: 49;
+$h2-pixels: 28;
+$h3-pixels: 22;
+$h4-pixels: 20;
+/*
+// Copy - normal in pixels
+*/
+$copy-normal-pixels: 12;
+/*
+// Dir Paths
+*/
+/*
+- Assets Dir:
+*/
+$core-assets-path: "/assets/";
+/*
+- Images:
+*/
+$core-image-path: $core-assets-path + "images/";
+/*
+- CSS:
+*/
+$core-css-path: $core-assets-path + "styles/";
+/*
+- JS:
+*/
+$core-js-path: $core-assets-path + "scripts/";
+/*
+- Fonts:
+*/
+$core-fonts-path: $core-css-path + "fonts/";
+
+/*
+// Colors - hex
+*/
+$colour-green: "#1B4240";
+$colour-light-green: "#50C0BB";
+$colour-orange: "#F3574D";
+$colour-logo-green: "#52c2bd";
+$colour-logo-stroke-green: "#a8dcdb";
+$colour-copy: "#333";
+$link-colour: "#51BFBA";
+$link-hover-colour: $colour-orange;
+$error-colour: "#ff0000";
+$success-colour: "008800";
+$colour-nav-active: "#F4574E";
+
+/*
+// Loading spinner path
+*/
+$loading-spinner-path: $core-image-path + "site/loading.gif";
+
+/*
+// Header height
+*/
+$header-height: 48;
+$header-height-pixels: $header-height + "px";
+
+/* 
+// Breakpoint variables 
+// These are the responsive breakpoint values - uses the emCalc function, which works out the em values based on the pixel param.
+*/
+$small-screen: emCalc(700);
+$medium-large-screen: emCalc(840);
+$medium-screen: emCalc(701);
+$medium-ipad-custom:emCalc(768);
+$large-screen: emCalc(976);
+$extra-large-screen: emCalc(1034);
+
+
+$screen: "only screen";
+$small: "only screen and (max-width:"#{$small-screen}")";
+$medium-large: "only screen and (min-width:"#{$medium-screen}") and (max-width:"#{$medium-large-screen}")";
+$medium: "only screen and (min-width:"#{$medium-screen}")";
+$large: "only screen and (min-width:"#{$large-screen}")";
+$extra-large-screen: "only screen and (min-width:"#{$extra-large-screen}")";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+$medium-ipad-portrait: "only screen and (min-width:"#{$medium-ipad-custom}") and (orientation: portrait)";

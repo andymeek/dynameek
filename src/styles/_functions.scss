@@ -1,0 +1,15 @@
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | EM Calculator function																			 																																																													|
+// | Function to convert pixels into EMs 																																																																																			|  
+// | Usage:
+
+						.article-heading {
+								font-size: emCalc(700);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@function emCalc($target, $context: $body-base-pixels){
+		@return ($target / $context) * 1em;
+}

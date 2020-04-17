@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <meta content="width=device-width,initial-scale=1" name=viewport>
+    <meta content=#51BFBA name=theme-color>
+    <base href="/">
+    <link href=/manifest.json rel=manifest crossorigin=use-credentials>
+    <meta content="An Application & API Development, Mobile Development, User
+	    Experience, Cloud Migration & Dev-Ops services company based in London." name=description>
+    <meta content="width=device-width,maximum-scale=1" name=viewport>
+    <link href=//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css rel=stylesheet>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet>
+    <style>
+        .max-width {
+            max-width: 100%
+        }
+
+        .clear-fix:before,
+        .clear-fix:after,
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table
+        }
+
+        .clear-fix:after,
+        .clearfix:after {
+            clear: both
+        }
+
+        .no-flicker {
+            -webkit-transform: translate3d(0, 0, 0)
+        }
+
+        .text-uppercase {
+            text-transform: uppercase
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .relative:before,
+        .relative:after {
+            content: "";
+            display: table
+        }
+
+        .relative:after {
+            clear: both
+        }
+
+        .f-left {
+            float: left
+        }
+
+        .f-right {
+            float: right
+        }
+
+        .montserrat,
+        .montserrat-bold {
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-smooth: always
+        }
+
+        .montserrat-bold {
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            font-smooth: always
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        html body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: "normal";
+            font-size: 16px;
+            color: #333
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0
+        }
+
+        h1 {
+            font-size: 49px;
+            font-size: 3.0625rem;
+            color: #1B4240;
+            text-transform: uppercase
+        }
+
+        h2 {
+            font-size: 28px;
+            font-size: 1.75rem;
+            color: #F3574D;
+            font-weight: normal
+        }
+
+        h3 {
+            font-size: 22px;
+            font-size: 1.375rem;
+            color: #1B4240;
+            font-weight: normal
+        }
+
+        h4 {
+            font-size: 20px;
+            font-size: 1.25rem
+        }
+
+        a {
+            text-decoration: none;
+            color: #51BFBA
+        }
+
+        a:hover {
+            color: #F3574D
+        }
+
+        hr {
+            height: 0.0625em;
+            border: 0;
+            width: 100%;
+            margin: 1.25em 0;
+            position: relative;
+            display: inline-block
+        }
+
+        hr:before,
+        hr:after {
+            content: "";
+            display: table
+        }
+
+        hr:after {
+            clear: both
+        }
+
+        q {
+            quotes: '\201C''\201D''\2018''\2019'
+        }
+
+        q:before {
+            content: open-quote
+        }
+
+        q:after {
+            content: close-quote
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            margin-left: 40px;
+            list-style-type: circle
+        }
+
+        header,
+        .bottom-background {
+            width: 100%;
+            background: url(/assets/images/site/bg-header-small.png) #fff top repeat-x;
+            background-size: contain;
+            min-height: 6.25em;
+            height: auto !important;
+            height: 6.25em
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            z-index: 2
+        }
+
+        .bottom-background {
+            position: fixed;
+            z-index: 1;
+            bottom: 0;
+            transform: rotate(180deg);
+            background-position: bottom
+        }
+
+        .container {
+            color: #1b4140;
+            margin: 0 auto;
+            z-index: 1;
+            background: white;
+            padding: 5.625em 0.625em 10em 0.625em
+        }
+
+        .container:before,
+        .container:after {
+            content: "";
+            display: table
+        }
+
+        .container:after {
+            clear: both
+        }
+
+        .container h1 {
+            margin-top: 1.25em;
+            margin-bottom: 0.125em
+        }
+
+        .container h2,
+        .container h3 {
+            margin-top: 0.625em;
+            margin-bottom: 0.625em
+        }
+
+        .container h3 {
+            margin-top: 1.5625em
+        }
+
+        .container p,
+        .container ul,
+        .container ol {
+            line-height: 1.5em
+        }
+
+        .container .what-we-do {
+            padding: 10px 0
+        }
+
+        .container .what-we-do span {
+            color: #88d4d1;
+            margin: 0 10px
+        }
+
+        .container .email {
+            margin-top: 2.5em;
+            font-size: 24px
+        }
+
+        .builds-container {
+            margin-top: 1.25em
+        }
+
+        .builds-container img {
+            display: inline-block;
+            margin: 0 0.3125em
+        }
+
+        .builds-container img:hover {
+            opacity: 0.7;
+            filter: alpha(opacity=70)
+        }
+
+        .builds-container img {
+            width: 120px
+        }
+
+        footer div {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            z-index: 3;
+            opacity: 0.95;
+            filter: alpha(opacity=95);
+            background: #1B4240;
+            padding: 10px 0.625em
+        }
+
+        footer div span {
+            font-size: 11px;
+            font-weight: normal
+        }
+
+        footer div a {
+            color: white
+        }
+
+        @media only screen and (max-width: 43.75em) {
+            h1 {
+                font-size: 34px;
+                font-size: 2.125rem
+            }
+
+            h2 {
+                font-size: 18px;
+                font-size: 1.125rem
+            }
+        }
+
+        @media only screen and (min-width: 61em) {
+            footer div {
+                padding: 10px 6.25em
+            }
+
+            .container {
+                float: left;
+                top: 7.5em;
+                padding-left: 6.25em;
+                max-width: 70%
+            }
+        }
+    </style> <noscript id='sapper-head-start'></noscript>
+    <title>404</title><noscript id='sapper-head-end'></noscript>
+</head>
+
+<body>
+    <div id=root>
+
+
+        <header></header>
+
+        <main>
+
+            <article class="container clearfix">
+                <h1>Dynameek</h1>
+                <h2>Error Not found</h2>
+                <p>The page you&#39;re looking for doesn&#39;t exist.</p>
+                <p>Please
+                    <a href="/">click here</a>
+                    to go home.
+                </p>
+
+            </article>
+        </main>
+
+
+
+        <div class="bottom-background"></div>
+        <footer>
+            <div><span>© Dynameek Ltd</span>
+                <span>Company No: 12134325 - VAT No: 341 5906 08</span></div>
+        </footer>
+    </div>
+    <script>__SAPPER__ = { error: { message: "Not found" }, status: 404, baseUrl: "", preloaded: [void 0, {}] }; if ('serviceWorker' in navigator) navigator.serviceWorker.register('/service-worker.js'); (function () { try { eval("async function x(){}"); var main = "/client/client.bab3f836.js" } catch (e) { main = "/client/legacy/client.cf11d119.js" }; var s = document.createElement("script"); try { new Function("if(0)import('')")(); s.src = main; s.type = "module"; s.crossOrigin = "use-credentials"; } catch (e) { s.src = "/client/shimport@1.0.1.js"; s.setAttribute("data-main", main); } document.head.appendChild(s); }());</script>

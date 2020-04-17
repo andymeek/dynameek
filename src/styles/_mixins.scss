@@ -1,0 +1,435 @@
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Breakpoint Mixin																																																																																					 	|
+// | Shortcut for outputting the media query breakpoints																																																				|  
+// | @param point (string)																																																																																		|
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.page-wrap {
+								width: 75%;
+								@include breakpoint(large) { width: 60%; }
+								@include breakpoint(medium) { width: 80%; }
+								@include breakpoint(small) { width: 95%; }
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin breakpoint($point) {
+  @if $point == large {
+    @media #{$large} { @content; }
+  }
+  @else if $point == medium {
+    @media #{$medium} { @content; }
+  }
+  @else if $point == small {
+    @media #{$small} { @content; }
+  }
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Clearfix																																																																																					 									|
+// | Shortcut for clearfix																																																																																		|  
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.article {
+											@include clearfix();
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Box Sizing with IE fallback																																																																												|  
+// | @param width (string)	- CSS property	 																																																																	|
+// | @param padding (string)	- CSS property	 																																																															|
+// | Usage:																																																																																																	|
+
+						section {
+								background: white;
+								@include box(50, 3);
+								margin: 0 auto;
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin box($width:'null', $padding:'null') {
+		-webkit-box-sizing: border-box; // Safari <= 5
+     -moz-box-sizing: border-box; // Firefox <= 19
+          box-sizing: border-box;
+		padding: 0% +$padding;
+		width: 0% + $width;
+		.lt-ie8 & { 
+				padding: 0% + $padding;
+				width: 0% + $width - $padding - $padding;
+		}
+}
+ 
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Box Sizing																																																																																					 							|
+// | Shortcut for clearfix																																																																																		|  
+// | @param box-model (string)	- CSS property	 																																																													|
+// | Usage:
+
+						*,
+						*:after,
+						*:before {
+								@include box-sizing(border-box);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin box-sizing($box-model:border-box) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Border radius													 																																																																		 									|
+// | Shortcut for border radius	 																																																																											|  
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.button {
+								@include border-radius(5px);
+						}
+
+						.submit-button {
+								@include border-top-radius(10px);
+								@include border-right-radius(8px);
+								@include border-bottom-radius(10px);
+								@include border-left-radius (6px);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+// Single side border-radius
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+   -webkit-border-top-left-radius: $radius;
+   border-top-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+		-webkit-border-bottom-left-radius: $radius;
+		border-bottom-left-radius: $radius;
+		background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Opacity																			 																																																																		 									|
+// | Shortcut for opacity																																																																																			|  
+// | Usage:
+
+						.article-heading {
+								@include opacity(0.8);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Text truncate - 																			 																																																																		 |
+// | Shortcut for text truncate																																																																													|
+// |	An easy way to truncate text with an ellipsis. Requires the element to be block or inline-block. 						|  
+// | Usage:
+
+						.text-truncate {
+								@include text-truncate;
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin text-truncate {
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Font size						 																			 																																																																		 |
+// | Shortcut to output rem font-size with px fallback  																																																				|
+// | Usage:
+
+						body {
+								@include font-size(16);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: ($sizeValue / $body-base-pixels) + rem;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Center Block				 																			 																																																																		|
+// | Center block elements  																																																																																|
+// | Usage:
+
+						img {
+								@include center-block;
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Indent				 																			 																																																																								|
+// | Indents text  																																																																																									|
+// | Usage:
+
+						img {
+								@include center-block;
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin indent {
+  text-indent: -999em;
+		position: absolute; 
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Min Height																																																																																					 							|
+// | Shortcut for min-height																																																																																| 
+// | @param pixels (Int)
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.article {
+											@include min-height();
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin min-height($pixels) {
+   min-height:emCalc($pixels); height:auto !important; height:emCalc($pixels);
+}
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Min Width																																																																																					 							|
+// | Shortcut for min-width																																																																																| 
+// | @param pixels (Int)
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.article {
+											@include min-height();
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin min-width($pixels) {
+   min-width:emCalc($pixels); width:auto !important; width:emCalc($pixels);
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Transition																																																																																					 							|
+// | Shortcut for transitions																																																																															| 
+// | @param transition-property (String)																																																																				|
+// | @param transition-time (String)																																																																								|
+// | @param method (String)																																																																																	|
+// | @return content (string)																																																																															|
+// | Usage:
+
+						button {
+											@include transition(background-color, 0.5s, ease);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Gradient																																																																																					 							  |
+// | Shortcut for transitions																																																																															| 
+// | @param from (String)																																																																																	  |
+// | @param to (String)																																																																																					|
+// | @param height (String)																																																																																	|
+// | @return content (string)																																																																															|
+// | Usage:
+
+						.gradient {
+						    @include gradient(red, white, 100%);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin gradient($from, $to, $height) {
+    background-color: $to;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background-image: -webkit-linear-gradient($from, $to);
+    background-image: -moz-linear-gradient($from, $to);
+    background-image: -o-linear-gradient($from, $to);
+    background-image: -ms-linear-gradient($from, $to);
+    background-image: linear-gradient($from, $to);
+    background-repeat: repeat-x;
+    -webkit-background-size: 100% $height;
+    -moz-background-size: 100% $height;
+    -o-background-size: 100% $height;
+    background-size: 100% $height;
+}
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Rotate																																																																																					 											|
+// | Shortcut for rotating																																																																																		| 
+// | @param degrees (Int)																																																																																			|
+// | Usage:
+
+						div {
+											@include rotate(90);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin rotate($degrees) {
+  -webkit-transform: rotate(#{$degrees}deg);
+  -moz-transform: rotate(#{$degrees}deg);
+  -ms-transform: rotate(#{$degrees}deg);
+  -o-transform: rotate(#{$degrees}deg);
+  transform: rotate(#{$degrees}deg);
+}
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Translate 3D																																																																																					 					|
+// | Shortcut for rotating																																																																																		| 
+// | @param x (Int) - Pixels																																																																																|
+// | @param y (Int) - Pixels																																																																																|
+// | @param z (Int) - Pixels																																																																																|
+// | Usage:
+
+						div {
+											@include translate3d(10, 20, 30);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Backface Visibility																																																																														 					|
+// | Shortcut for rotating																																																																																		| 
+// | @param value (String) - Optional / Default: visible																																																				|
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin backfaceVisibility($value: 'visible') {
+		-webkit-backface-visibility: $value;
+  -moz-backface-visibility: $value;
+  -ms-backface-visibility: $value;
+  -o-backface-visibility: $value;
+  backface-visibility: $value;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Font Montserrate																																																																																					 	|
+// | Shortcut for transitions																																																																															| 
+// | @param weight (String) - Optional																																																																						|
+// | Usage:
+
+						button {
+											@include transition(background-color, 0.5s, ease);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+@mixin font($weight: 'normal') {
+    font-family: 'Montserrat', sans-serif; font-weight: $weight;
+}
+
+/*
+// +--------------------------------------------------------------------------------------------------------+  
+// | Tap Highlight																																																																																					 				|
+// | Shortcut for the tap highlight color																																																																			| 
+// | @param color (String) - Optional	/ default: black																																																						|
+// | Usage:
+
+						button {
+											@include tapHighlight(red);
+						}
+
+// +--------------------------------------------------------------------------------------------------------+
+*/
+
+@mixin tapHighlight($color: rgba(0,0,0,0)) {
+     -webkit-tap-highlight-color: $color
+}
