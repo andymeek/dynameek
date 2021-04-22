@@ -25,7 +25,7 @@
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-replace": "^2.2.0",
-    "@types/node": "^13.11.1",
+    "@types/node": "^14.14.41",
     "autoprefixer": "^9.7.6",
     "cypress": "^4.4.0",
     "node-sass": "^4.13.1",
